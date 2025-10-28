@@ -1,6 +1,10 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { unoptimized: true },
-}
-export default nextConfig
+  output: "standalone",
+  reactStrictMode: true,
+  experimental: {
+    serverActions: false,
+  },
+};
+
+export default nextConfig;
