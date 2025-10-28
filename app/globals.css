@@ -1,0 +1,821 @@
+/* ===================================================================
+   NARATIVA WEBSITE - MODERN DESIGN SYSTEM
+   =================================================================== */
+
+/* 1. FONTS & CSS VARIABLES
+------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Brand Colors */
+    --primary: #0041C2;
+    --secondary: #007BFF;
+    --dark: #1a1a2e;
+    --light: #f8f9ff;
+    --text-body: #555;
+    
+    /* Gradients */
+    --gradient-main: linear-gradient(90deg, var(--primary), var(--secondary));
+    --gradient-soft: linear-gradient(135deg, rgba(0, 65, 194, 0.1), rgba(0, 123, 255, 0.1));
+    
+    /* Text Colors */
+    --text-on-dark: rgba(255, 255, 255, 0.85);
+    --text-on-dark-light: rgba(255, 255, 255, 0.6);
+    
+    /* Shadows */
+    --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 50px rgba(0, 65, 194, 0.15);
+    --shadow-button: 0 10px 25px rgba(0, 65, 194, 0.3);
+    
+    /* Spacing */
+    --section-padding: 5rem;
+    --card-padding: 40px;
+    --border-radius: 20px;
+    
+    /* Transitions */
+    --transition-base: all 0.3s ease;
+    --transition-slow: all 0.4s ease;
+}
+
+/* 2. GLOBAL STYLES
+------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-body);
+    background-color: var(--light);
+    padding-top: 82px;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+/* 3. UTILITY CLASSES
+------------------------------------------------------------------- */
+.text-gradient {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bg-gradient-soft {
+    background: var(--gradient-soft);
+}
+
+/* 4. NAVIGATION
+------------------------------------------------------------------- */
+.navbar-gradient {
+    background: var(--gradient-main);
+    box-shadow: 0 5px 20px rgba(0, 65, 194, 0.2);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition-base);
+}
+
+.navbar-brand.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--text-on-dark) !important;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: white !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 60%;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* 5. BUTTONS
+------------------------------------------------------------------- */
+.btn {
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    transition: var(--transition-base);
+}
+
+.btn-gradient {
+    background: var(--gradient-main);
+    border: none;
+    color: white !important;
+    box-shadow: var(--shadow-button);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 65, 194, 0.4);
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 6. CARDS
+------------------------------------------------------------------- */
+.card-modern {
+    background: white;
+    padding: var(--card-padding);
+    border-radius: var(--border-radius);
+    border: 1px solid #f0f0f0;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+    height: 100%;
+}
+
+.card-modern:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Service Cards */
+.service-card-modern {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card-modern.featured {
+    border: 2px solid var(--primary);
+}
+
+.service-icon-modern {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary);
+    transition: var(--transition-base);
+}
+
+.service-card-modern:hover .service-icon-modern {
+    background: var(--gradient-main);
+    color: white;
+    transform: rotate(360deg);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient-main);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Pricing Cards */
+.pricing-card-modern {
+    position: relative;
+}
+
+.pricing-card-modern.featured-pricing {
+    border: 2px solid var(--primary);
+    transform: scale(1.05);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-main);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+}
+
+.price-tag {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.price-tag .currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.price-tag .amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.price-tag .period {
+    font-size: 1rem;
+    color: var(--text-body);
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* 7. HERO SECTION
+------------------------------------------------------------------- */
+.hero-modern {
+    background: var(--light);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    line-height: 1.2;
+}
+
+.hero-badge .badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.hero-image-container {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.hero-mockup {
+    filter: drop-shadow(0 20px 40px rgba(0, 65, 194, 0.2));
+}
+
+/* Page Hero */
+.page-hero-section {
+    padding: 5rem 0;
+    background: var(--gradient-main);
+    position: relative;
+}
+
+.page-hero-section h1 {
+    color: white;
+}
+
+.page-hero-section p {
+    color: var(--text-on-dark);
+}
+
+/* 8. HOW IT WORKS SECTION
+------------------------------------------------------------------- */
+.how-it-works-section {
+    background: var(--light);
+}
+
+.step-card {
+    background: white;
+    padding: 35px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition-base);
+    border: 1px solid #f0f0f0;
+    box-shadow: var(--shadow-md);
+    height: 100%;
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: var(--gradient-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--primary);
+    transition: var(--transition-base);
+}
+
+.step-card:hover .step-icon {
+    background: var(--gradient-main);
+    color: white;
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* 9. GALLERY SECTION
+------------------------------------------------------------------- */
+.gallery-section .filter-buttons .btn {
+    background-color: #e9ecef;
+    color: var(--text-body);
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    transition: var(--transition-base);
+    border: none;
+    margin: 0.25rem;
+}
+
+.gallery-section .filter-buttons .btn.active,
+.gallery-section .filter-buttons .btn:hover {
+    background: var(--gradient-main);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 65, 194, 0.3);
+    transform: translateY(-2px);
+}
+
+.gallery-card-modern {
+    padding: 0;
+}
+
+.card-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card-img-container img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-card-modern:hover .card-img-container img {
+    transform: scale(1.1);
+}
+
+.card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-card-modern:hover .card-img-overlay {
+    opacity: 1;
+}
+
+.overlay-icon {
+    width: 60px;
+    height: 60px;
+    background: white;
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+}
+
+.gallery-card-modern:hover .overlay-icon {
+    transform: scale(1);
+}
+
+.gallery-card-modern .card-body {
+    padding: 25px;
+}
+
+.category-badge {
+    background: var(--gradient-soft);
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* 10. CTA SECTION
+------------------------------------------------------------------- */
+.cta-modern {
+    background: var(--gradient-main);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 11. FOOTER
+------------------------------------------------------------------- */
+.footer-modern {
+    background: var(--gradient-main);
+    color: var(--text-on-dark-light);
+}
+
+.footer-modern h5 {
+    color: white;
+    font-weight: 700;
+}
+
+.footer-modern a {
+    color: var(--text-on-dark-light);
+    transition: var(--transition-base);
+}
+
+.footer-modern a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 2rem;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    transition: var(--transition-base);
+}
+
+.social-icons a:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* 12. WHATSAPP FLOATING BUTTON
+------------------------------------------------------------------- */
+.wa-floating-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: var(--transition-base);
+    opacity: 0;
+    transform: scale(0);
+}
+
+.wa-floating-button.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.wa-floating-button:hover {
+    background: #128C7E;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* 13. CONTACT CARDS
+------------------------------------------------------------------- */
+.contact-card {
+    text-align: center;
+}
+
+.contact-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--gradient-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: var(--primary);
+    transition: var(--transition-base);
+}
+
+.contact-card:hover .contact-icon {
+    background: var(--gradient-main);
+    color: white;
+    transform: rotate(360deg);
+}
+
+/* 14. RESPONSIVE DESIGN
+------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 76px;
+    }
+
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-modern {
+        padding-top: 2rem;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+
+    .pricing-card-modern.featured-pricing {
+        transform: scale(1);
+    }
+
+    .step-card {
+        padding: 25px;
+        margin-bottom: 1rem;
+    }
+
+    .step-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    :root {
+        --section-padding: 3rem;
+        --card-padding: 25px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .wa-floating-button {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 1.75rem;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+    }
+
+    .price-tag .amount {
+        font-size: 2.5rem;
+    }
+}
+
+/* 15. ANIMATIONS
+------------------------------------------------------------------- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* 16. SCROLLBAR STYLING
+------------------------------------------------------------------- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-main);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+
+    /* ===================================================================
+   17. ADMIN AREA STYLES (Konsisten dengan Tema Utama)
+   =================================================================== */
+
+/* Container utama halaman admin */
+.admin-page-container {
+    padding-top: 4rem; /* Jarak dari navbar global */
+    padding-bottom: 4rem;
+    min-height: calc(100vh - 82px); /* Agar footer menempel di bawah jika konten sedikit */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card wrapper untuk konten admin */
+.admin-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Agar card mengisi ruang vertikal */
+}
+
+/* Styling Form Admin */
+.admin-form .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-body);
+}
+.admin-form .form-control,
+.admin-form .form-select {
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    transition: var(--transition-base);
+}
+.admin-form .form-control:focus,
+.admin-form .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(0, 65, 194, 0.25);
+    outline: none;
+}
+.admin-form textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+.admin-form .form-text {
+    font-size: 0.875em;
+    color: #6c757d;
+}
+.admin-form .img-thumbnail {
+    margin-top: 10px;
+    border: 1px solid #dee2e6;
+}
+
+/* Styling Tabel Admin */
+.admin-table-wrapper {
+    overflow-x: auto; /* Scroll horizontal jika perlu */
+}
+.admin-table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Jarak antar baris */
+}
+.admin-table thead th {
+    background-color: var(--light);
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-body);
+}
+.admin-table tbody td {
+    background-color: white;
+    padding: 1rem;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #f0f0f0; /* Garis tipis */
+}
+/* Radius sudut untuk baris tabel */
+.admin-table tbody tr:first-child td:first-child { border-top-left-radius: 10px; }
+.admin-table tbody tr:first-child td:last-child { border-top-right-radius: 10px; }
+.admin-table tbody tr:last-child td { border-bottom: none; } /* Hapus border bawah di baris terakhir */
+.admin-table tbody tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+.admin-table tbody tr:last-child td:last-child { border-bottom-right-radius: 10px; }
+
+.admin-table tbody tr {
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Shadow halus per baris */
+     transition: var(--transition-base);
+}
+.admin-table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm); /* Shadow lebih jelas saat hover */
+}
+.admin-table .actions a {
+    margin-right: 0.5rem;
+    color: var(--primary);
+    transition: var(--transition-base);
+    font-size: 0.9rem; /* Ukuran ikon/teks aksi */
+}
+.admin-table .actions a:hover { color: var(--secondary); }
+.admin-table .actions a.delete { color: #dc3545; }
+.admin-table .actions a.delete:hover { color: #a0212e; }
+
+/* Tombol submit di form admin */
+.btn-submit { /* Sesuaikan jika nama kelas berbeda */
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    transition: var(--transition-base);
+    background: var(--gradient-main);
+    border: none;
+    color: white !important;
+    box-shadow: var(--shadow-button);
+}
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 65, 194, 0.4);
+}
+}
