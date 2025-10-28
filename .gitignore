@@ -1,12 +1,25 @@
+# Dependencies
 node_modules/
+
+# Next.js build output
 .next/
+out/
+
+# Vercel cache
 .vercel/
+
+# Environment variables
 .env
 .env.local
 .env.production
 .env.development
-.DS_Store
-dist/
-out/
+
+# Editor settings
 .vscode/
 .idea/
+
+# OS metadata
+.DS_Store
+
+# Other build outputs (good to have)
+dist/
