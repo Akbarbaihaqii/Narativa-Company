@@ -1,0 +1,275 @@
+/* app/galeri/Galeri.css */
+
+/* --- Variabel Warna (Sama seperti sebelumnya) --- */
+:root {
+  --galeri-primary-rgb: 10, 36, 99; 
+  --galeri-secondary-rgb: 62, 146, 204;
+  --galeri-primary: #0a2463;
+  --galeri-secondary: #3e92cc;
+  --galeri-light: #f8f9fa; 
+  --galeri-dark: #212529; 
+  --galeri-muted: #6c757d; 
+  --galeri-white: #ffffff;
+  --galeri-border-color: #dee2e6; 
+  --galeri-shadow-sm: 0 4px 15px rgba(10, 36, 99, 0.08);
+  --galeri-shadow-lg: 0 15px 50px rgba(10, 36, 99, 0.18);
+  --galeri-gradient-primary: linear-gradient(135deg, #0a2463 0%, #1e88e5 50%, #3e92cc 100%);
+}
+
+/* --- Style Section Galeri (Sama) --- */
+.gallerySection {
+  display: block !important; 
+  opacity: 1 !important; 
+  visibility: visible !important; 
+  padding: 4rem 0 !important; 
+  background-color: var(--galeri-light) !important;
+  min-height: 50vh; 
+}
+
+.galleryContainer { 
+  display: block !important; 
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 15px !important; 
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* --- Judul (Sama) --- */
+.galleryTitleWrapper {
+  display: block !important;
+  text-align: center !important;
+  margin-bottom: 3rem !important; 
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.galleryTitle {
+  font-size: clamp(2rem, 5vw, 2.8rem) !important; 
+  font-weight: 800 !important; 
+  color: var(--galeri-dark) !important;
+  margin-bottom: 0.75rem !important;
+  letter-spacing: -0.5px !important;
+}
+.gallerySubtitle {
+  font-size: 1.1rem !important;
+  color: var(--galeri-muted) !important; 
+  max-width: 650px !important; 
+  margin: 0 auto !important;
+  line-height: 1.6 !important;
+}
+.textGradient { 
+  background: var(--galeri-gradient-primary) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* --- Grid Kartu (Desktop & Tablet - Sama) --- */
+.galleryGrid {
+  display: grid !important; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
+  gap: 1.75rem !important; 
+  width: 100% !important; 
+  min-height: 200px; 
+  opacity: 1 !important;
+  visibility: visible !important;
+  overflow-x: initial; 
+  white-space: initial;
+  padding-bottom: 1rem; 
+}
+
+/* --- Kartu Template (Default - Sama, lebar diatur di media query) --- */
+.templateCard { 
+  display: flex !important; 
+  flex-direction: column !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background-color: var(--galeri-white) !important;
+  border-radius: 16px !important; 
+  border: 1px solid var(--galeri-border-color) !important; 
+  overflow: hidden !important; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  height: 100% !important; 
+  text-decoration: none !important; 
+  color: inherit !important; 
+  /* Hapus width & max-width dari sini, atur di media query */
+  /* width: 85%; */
+  /* max-width: 320px; */
+  flex-shrink: 0; /* Tetap perlu agar tidak menyusut di flex */
+  /* scroll-snap-align: start; Hapus snap dari kartu, taruh di grid */
+}
+.templateCard:hover {
+  transform: translateY(-8px) !important; /* Kurangi sedikit efek angkat */ 
+  box-shadow: var(--galeri-shadow-lg) !important; 
+}
+
+/* --- Wadah Gambar & Overlay (Sama) --- */
+.cardImageContainer {
+  display: block !important;
+  position: relative !important; 
+  aspect-ratio: 16 / 10 !important; 
+  overflow: hidden !important; 
+  background-color: #eee !important; 
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.cardImage {
+  display: block !important; 
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) !important; 
+}
+.templateCard:hover .cardImage {
+  transform: scale(1.08) !important; /* Kurangi sedikit zoom */
+}
+.cardOverlay {
+  position: absolute !important; top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  background: linear-gradient(to top, rgba(var(--galeri-primary-rgb, 10, 36, 99), 0.8) 0%, rgba(var(--galeri-secondary-rgb, 62, 146, 204), 0.5) 100%) !important; 
+  display: flex !important; justify-content: center !important; align-items: center !important;
+  opacity: 0 !important; visibility: hidden !important; 
+  transition: opacity 0.4s ease-in-out, visibility 0s linear 0.4s !important; 
+  pointer-events: none !important; z-index: 1 !important; 
+}
+.templateCard:hover .cardOverlay {
+  opacity: 1 !important; visibility: visible !important; 
+  pointer-events: auto !important; 
+  transition: opacity 0.4s ease-in-out, visibility 0s linear 0s !important; 
+}
+.overlayLinkButton {
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  width: 60px !important; height: 60px !important;
+  background-color: rgba(255, 255, 255, 0.15) !important; 
+  border: 2px solid var(--galeri-white) !important; color: var(--galeri-white) !important;
+  border-radius: 50% !important; text-decoration: none !important; font-size: 1.4rem !important; 
+  transition: background-color 0.3s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease !important; 
+  transform: translateY(20px) scale(0.8) !important; opacity: 0 !important; 
+  pointer-events: auto !important; z-index: 2 !important; 
+}
+.templateCard:hover .overlayLinkButton {
+  transform: translateY(0) scale(1) !important; opacity: 1 !important;
+  transition-delay: 0.1s !important; 
+}
+.overlayLinkButton:hover {
+  background-color: var(--galeri-white) !important; color: var(--galeri-primary) !important; 
+  transform: scale(1.15) !important; 
+}
+
+/* --- Body Kartu (Sama) --- */
+.cardBody {
+  display: flex !important; flex-direction: column !important;
+  padding: 1rem 1.25rem !important; flex-grow: 1 !important; 
+  opacity: 1 !important; visibility: visible !important;
+}
+.categoryBadge {
+  display: inline-block !important; font-size: 0.7rem !important; font-weight: 600 !important; 
+  text-transform: uppercase !important; letter-spacing: 0.5px !important;
+  padding: 0.35em 0.9em !important;
+  background: linear-gradient(135deg, rgba(var(--galeri-primary-rgb, 10, 36, 99), 0.1) 0%, rgba(var(--galeri-secondary-rgb, 62, 146, 204), 0.1) 100%) !important; 
+  color: var(--galeri-primary) !important; border-radius: 20px !important;
+  margin-bottom: 0.75rem !important; align-self: flex-start !important; 
+}
+.cardTitle {
+   font-size: 1.15rem !important; font-weight: 700 !important; 
+  color: var(--galeri-dark) !important; margin-bottom: 0.5rem !important; 
+  line-height: 1.4 !important;
+}
+.cardDescription {
+  font-size: 0.85rem !important; color: var(--galeri-muted) !important;
+  line-height: 1.6 !important; margin-bottom: 1rem !important; 
+   display: -webkit-box !important; -webkit-line-clamp: 2 !important; 
+   -webkit-box-orient: vertical !important;  overflow: hidden !important; 
+   min-height: calc(1.6em * 2) !important; flex-grow: 1 !important; 
+}
+
+/* --- State Loading & Error & Empty (Sama) --- */
+.loadingContainer, .errorContainer, .emptyContainer {
+  display: flex !important; flex-direction: column !important;
+  align-items: center !important; justify-content: center !important;
+  min-height: 40vh !important; text-align: center !important;
+  padding: 2rem !important; opacity: 1 !important; visibility: visible !important;
+}
+.emptyContainer p {
+  font-size: 1.1rem !important;
+}
+
+/* --- Animasi Scroll (Sama) --- */
+.scroll-animate {
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), 
+              transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1); 
+}
+.scroll-animate.is-visible { 
+  opacity: 1 !important; 
+  transform: translateY(0) !important; 
+  visibility: visible !important; 
+}
+
+
+/* =======================================================
+   🔥🔥🔥 FIX SLIDER HORIZONTAL DI MOBILE (< 768px) 🔥🔥🔥
+   ======================================================= */
+@media (max-width: 767.98px) { /* Gunakan .98px untuk target yang lebih presisi */
+  .galleryContainer {
+    /* Hapus padding container AGAR slider bisa FULL WIDTH */
+    padding: 0 !important; 
+  }
+  
+  .galleryGrid {
+    /* === UBAH JADI FLEXBOX === */
+    display: flex !important; 
+    grid-template-columns: none !important; /* Matikan grid */
+    
+    /* === AKTIFKAN SCROLL HORIZONTAL === */
+    overflow-x: auto !important; 
+    
+    /* === CEGAH WRAPPING & ATUR ALIGNMENT === */
+    white-space: nowrap !important; /* Item tidak turun baris */
+    align-items: stretch; /* Pastikan semua kartu sama tinggi jika flex-basis beda */
+
+    /* === PADDING & SNAPPING === */
+    /* Padding kiri untuk kartu pertama, padding kanan untuk space setelah kartu terakhir */
+    padding: 0 20px 1.5rem 20px !important; 
+    gap: 1rem !important; /* Jarak antar kartu */
+    scroll-snap-type: x mandatory !important; /* Efek "magnet" saat scroll */
+    /* Beri padding pada scroll agar snap pas di awal kartu */
+    scroll-padding-left: 20px !important; 
+    scroll-padding-right: 20px !important; 
+
+    /* === SCROLLBAR HALUS & HILANG === */
+    -webkit-overflow-scrolling: touch !important; /* iOS */
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+  }
+  .galleryGrid::-webkit-scrollbar {
+      display: none !important; /* Chrome/Safari */
+  }
+
+  /* === UKURAN KARTU DI MOBILE SLIDER === */
+  .templateCard {
+      /* Lebar kartu, misal 80% viewport width */
+      width: 80vw !important; 
+      /* Lebar maksimal agar tidak terlalu besar di tablet potrait */
+      max-width: 320px !important; 
+      /* Jangan biarkan kartu menyusut */
+      flex-shrink: 0 !important; 
+      /* Titik snap (magnet) di awal kartu */
+      scroll-snap-align: start !important; 
+      /* Hapus hover angkat di mobile (kadang aneh) */
+      /* transform: none !important; */ 
+  }
+   /* Hapus hover angkat di mobile (kadang aneh) */
+  .templateCard:hover {
+       transform: none !important; 
+       /* Anda masih bisa pertahankan shadow jika mau */
+       /* box-shadow: var(--galeri-shadow-lg) !important; */
+  }
+
+   /* Judul tetap perlu padding di mobile */
+   .galleryTitleWrapper {
+     padding: 0 20px !important; 
+   }
+}
+
