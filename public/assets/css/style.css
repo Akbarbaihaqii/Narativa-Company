@@ -2905,13 +2905,11 @@ body {
 }
 
 .lead.text-muted {
-  background: var(--gradient-primary); /* Menggunakan gradient biru dari tema Anda */
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent; /* Fallback */
-  /* Properti !important sudah tidak diperlukan lagi */
+  color: #ffffff !important; /* warna putih solid */
+  background: none !important; /* hapus efek gradasi kalau ada */
+  -webkit-text-fill-color: #ffffff !important;
 }
+
 
 
 

@@ -113,7 +113,8 @@ export default function TambahTemplatePage() {
 
   // --- Render Tampilan Halaman ---
   return (
-    <main className="container py-5" style={{ maxWidth: '960px', margin: 'auto' }}>
+       <main className="container" style={{ paddingTop: '100px', paddingBottom: '40px' }}>
+
       {/* Judul dan Tombol Kembali */}
       <div className="d-flex justify-content-between align-items-center mb-5">
          <h2 className="fw-bold mb-0">Tambah Template Baru</h2>
